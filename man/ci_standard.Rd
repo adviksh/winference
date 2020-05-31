@@ -4,15 +4,19 @@
 \alias{ci_standard}
 \title{Confidence Interval Using Asymptotic Normality}
 \usage{
-ci_standard(estimates, st_errs, conf_level = 0.95)
+ci_standard(estimates, st_errs, k = 1, conf_level = 0.95)
 }
 \arguments{
 \item{estimates}{numeric vector \cr
-A vector of estimates. Will return a confidence interval for the maximum
-estimate.}
+A vector of estimates.}
 
 \item{st_errs}{numeric vector \cr
 A vector of estimated standard errors for each estimate.}
+
+\item{k}{integer \cr
+The rank of the estimate of interest. k = 1 returns the confidence interval
+for the highest estimate, and k = length(estimates) returns the
+confidence interval for the lowest estimate.}
 
 \item{conf_level}{double in (0,1) \cr
 The desired confidence level of the resulting interval. Note that

@@ -1,4 +1,4 @@
 library(testthat)
-library(winfer)
+library(winference)
 
-test_check("winfer")
+test_check("winference")

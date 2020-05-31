@@ -2,7 +2,13 @@
 #' @export
 #' @inheritParams ci_docs
 #'
-ci_conditional_equal_tailed <- function(estimates, st_errs, conf_level = 0.95) {
+#' @description
+#' Returns an equal-tailed confidence interval with nominal coverage for the
+#' k-th highest estimate in `estimates`.
+#'
+ci_conditional_equal_tailed <- function(estimates, st_errs,
+                                        k = 1,
+                                        conf_level = 0.95) {
 
   # Defense -----------------------------------------------------------------
   check_estimates(estimates)
@@ -19,16 +25,15 @@ ci_conditional_equal_tailed <- function(estimates, st_errs, conf_level = 0.95) {
   estimates_sorted <- estimates[ordering]
   st_errs_sorted   <- st_errs[ordering]
 
-  ci <- purrr::map_dbl(tail_tiles,
-                       mu_alpha_conditional,
-                       y        = estimates_sorted[1],
-                       se       = st_errs_sorted[1],
-                       trunc_lo = conditional_trunc_lo(estimates_sorted))
+  trunc_points <- conditional_trunc_points(estimates, k)
 
-  if (is.na(ci[1])) ci[1] <- -Inf
-  if (is.na(ci[2])) ci[2] <- Inf
+  purrr::map_dbl(tail_tiles,
+                 mu_alpha_conditional,
+                 y        = estimates_sorted[k],
+                 se       = st_errs_sorted[k],
+                 trunc_lo = trunc_points[1],
+                 trunc_hi = trunc_points[2])
 
-  ci
 }
 
 mu_alpha_conditional <- function(alpha, y, se, trunc_lo = -Inf, trunc_hi = Inf) {

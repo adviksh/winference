@@ -8,8 +8,7 @@ check_estimates(estimates)
 }
 \arguments{
 \item{estimates}{numeric vector \cr
-A vector of estimates. Will return a confidence interval for the maximum
-estimate.}
+A vector of estimates.}
 }
 \description{
 Check 'estimates' Argument

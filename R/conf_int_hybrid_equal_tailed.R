@@ -2,7 +2,8 @@
 #' @export
 #' @inheritParams ci_docs
 #'
-ci_hybrid_equal_tailed <- function(estimates, st_errs, conf_level = 0.95,
+ci_hybrid_equal_tailed <- function(estimates, st_errs, k = 1,
+                                   conf_level = 0.95,
                                    beta = (1 - conf_level) / 10) {
 
   # Defense -----------------------------------------------------------------
@@ -35,14 +36,15 @@ ci_hybrid_equal_tailed <- function(estimates, st_errs, conf_level = 0.95,
                                    st_errs    = st_errs,
                                    conf_level = 1 - beta)
 
+  trunc_points <- conditional_trunc_points(estimates, k)
   hybrid_test <- purrr::partial(hybrid_equal_tailed_test_rejects,
                                 y           = estimates_sorted[1],
                                 sigma       = st_errs_sorted[1],
                                 n_estimates = length(estimates),
                                 alpha       = alpha,
                                 beta        = beta,
-                                trunc_lo    = conditional_trunc_lo(estimates),
-                                trunc_hi    = Inf)
+                                trunc_lo    = trunc_points[1],
+                                trunc_hi    = trunc_points[2])
 
   reject_bounds <- purrr::map_lgl(conf_int_unb, hybrid_test)
 

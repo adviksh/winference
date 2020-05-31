@@ -1,6 +1,6 @@
 Package: winference
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Estimators and Confidence Intervals Accounting for the Winner's Curse
 Version: 0.0.0.9000
 Author: Advik Shreekumar
 Maintainer: Advik Shreekumar <adviks@mit.edu>

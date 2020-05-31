@@ -2,7 +2,7 @@
 #' @export
 #' @inheritParams ci_docs
 #'
-ci_unconditional <- function(estimates, st_errs, conf_level = 0.95) {
+ci_unconditional <- function(estimates, st_errs, k = 1, conf_level = 0.95) {
 
   # Defense -----------------------------------------------------------------
   check_estimates(estimates)
@@ -20,5 +20,5 @@ ci_unconditional <- function(estimates, st_errs, conf_level = 0.95) {
   estimates_sorted <- estimates[ordering]
   st_errs_sorted   <- st_errs[ordering]
 
-  estimates_sorted[1] + tail_tiles * st_errs_sorted[1]
+  estimates_sorted[k] + tail_tiles * st_errs_sorted[k]
 }

@@ -11,8 +11,7 @@ check_st_errs(st_errs, estimates)
 A vector of estimated standard errors for each estimate.}
 
 \item{estimates}{numeric vector \cr
-A vector of estimates. Will return a confidence interval for the maximum
-estimate.}
+A vector of estimates.}
 }
 \description{
 Check 'st_errs' Argument

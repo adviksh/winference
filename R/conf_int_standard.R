@@ -2,7 +2,7 @@
 #' @export
 #' @inheritParams ci_docs
 #'
-ci_standard <- function(estimates, st_errs, conf_level = 0.95) {
+ci_standard <- function(estimates, st_errs, k = 1, conf_level = 0.95) {
 
   # Defense -----------------------------------------------------------------
   check_estimates(estimates)
@@ -19,5 +19,5 @@ ci_standard <- function(estimates, st_errs, conf_level = 0.95) {
   estimates_sorted <- estimates[ordering]
   st_errs_sorted   <- st_errs[ordering]
 
-  estimates_sorted[1] + st_errs_sorted[1] * stats::qnorm(tail_tiles)
+  estimates_sorted[k] + st_errs_sorted[k] * stats::qnorm(tail_tiles)
 }

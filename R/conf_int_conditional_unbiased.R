@@ -1,7 +1,8 @@
 #' Conditional Confidence Interval Using Truncated Normality
 #' @inheritParams ci_docs
 #'
-ci_conditional_unbiased <- function(estimates, st_errs, conf_level = 0.95) {
+ci_conditional_unbiased <- function(estimates, st_errs, k = 1,
+                                    conf_level = 0.95) {
 
   rlang::abort("still in development")
 

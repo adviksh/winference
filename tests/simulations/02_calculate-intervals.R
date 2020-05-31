@@ -63,7 +63,7 @@ ci_tb <- experiment_tb %>%
             ci            = future_map(experiment, map_ci,
                                        ci_fun      = ci_fun,
                                        conf_levels = conf_levels,
-                                       .options = future_options(packages = "winfer")))
+                                       .options = future_options(packages = "winference")))
 
 # Save --------------------------------------------------------------------
 message("Saving...")
