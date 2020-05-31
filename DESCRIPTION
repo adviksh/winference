@@ -1,0 +1,19 @@
+Package: winference
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.0.0.9000
+Author: Advik Shreekumar
+Maintainer: Advik Shreekumar <adviks@mit.edu>
+Description: Estimators and Confidence Intervals from "Inference on Winners"
+    (Andrews, Kitagawa, McCloskey 2019).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat
+Imports: 
+    TruncatedNormal,
+    rlang,
+    purrr,
+    assertthat
+RoxygenNote: 7.1.0

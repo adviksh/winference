@@ -1,0 +1,7 @@
+.Rhistory
+.RData
+.Rproj.user
+.DS_Store
+tests/simulations/*.png
+tests/simulations/*.rds
+**/log/*
